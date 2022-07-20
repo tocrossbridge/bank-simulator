@@ -79,7 +79,7 @@ export default {
 
           // I have doubts about business rules here, so I chose the path that only works with 2 are select,
           // but u know that if you change && to || it will work in the other possibility
-          if(element.title == this.filterBy.title && element.status == this.filterBy.status){
+          if(element.title.toLowerCase() == this.filterBy.title.toLowerCase() && element.status == this.filterBy.status.toLowerCase()){
             tempList.push(element)
           }
 
