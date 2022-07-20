@@ -1,1 +1,8 @@
 @import "./base.css";
+
+.loading__box{
+    display: grid;
+}
+.loading__img{
+    max-width: 200px;
+}
