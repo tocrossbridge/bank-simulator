@@ -47,5 +47,8 @@ export default {
 }
 </script>
 <style scoped>
+.search__box{ margin: 2em auto; }
+.search__box > *{ margin: 0 1em 0 0; }
+.search__box > *:last-child{ margin: 0; }
 .alert__text{ color: var(--clr-pink); }
 </style>

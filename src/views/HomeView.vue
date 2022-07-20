@@ -106,10 +106,6 @@ export default {
 </script>
 
 <style>
-.search__box{
-  margin: 2em auto;
-}
-
 /* table */
 table{
   width: 100%;
