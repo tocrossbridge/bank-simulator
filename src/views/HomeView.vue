@@ -1,12 +1,7 @@
 <template>
   <main>
 
-    <div class="search__box">
-      <input type="text" placeholder="Pesquise por título">
-      <select name="" id="">
-        <option value="">Status</option>
-      </select>
-    </div>
+    <Filter v-on:changeFilter="updateFilter($event)" />
 
     <div>
       <div v-if="errored">
@@ -29,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            <Transactions :transactions="transactions" />
+            <Transactions :transactions="transactionsFiltered" />
           </tbody>
         </table>
       </div>
@@ -40,20 +35,23 @@
 </template>
 
 <script>
+import Filter from '../components/Filter.vue';
 import Transactions from '../components/Transactions.vue';
 import Modal from '../components/Modal.vue';
 import { getAllTransactions, getTransaction } from '../services/transactions';
 
 export default {
-    components: { Modal, Transactions },
+    components: { Modal, Filter, Transactions },
     data() {
         return {
             errored: false,
             transactions: [],
+            transactionsFiltered: [],
             modal: {
               open: false,
               data: []
-            }
+            },
+            filterBy: {}
         };
     },
     mounted() {
@@ -63,6 +61,7 @@ export default {
       fetchTransactions(){
         getAllTransactions()
           .then(response => {
+            this.transactionsFiltered = response.data
             this.transactions = response.data
           })
           .catch(error => {
@@ -70,8 +69,9 @@ export default {
             console.log(error);
           })
           .finally(() => this.loading = false);
-        },
+      },
       openModal(transactionId){
+        console.log('modal')
         getTransaction(transactionId)
           .then(response => {
             this.modal.open = true
@@ -82,7 +82,25 @@ export default {
             console.log(error);
           })
           .finally(() => this.loading = false);
-        }
+      },
+      updateFilter(newFilter){
+        // console.log('filter father', newFilter)
+        this.filterBy = newFilter
+
+        let tempList = []
+
+        this.transactions.forEach(element => {
+
+          // I have doubts about business rules here, so I chose the path that only works with 2 are select,
+          // but u know that if you change && to || it will work in the other possibility
+          if(element.title == this.filterBy.title && element.status == this.filterBy.status){
+            tempList.push(element)
+          }
+
+        });
+
+        this.transactionsFiltered = tempList
+      }
     }
 }
 </script>
