@@ -71,7 +71,6 @@ export default {
           .finally(() => this.loading = false);
       },
       updateFilter(newFilter){
-        // console.log('filter father', newFilter)
         this.filterBy = newFilter
 
         let tempList = []

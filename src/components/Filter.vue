@@ -35,7 +35,6 @@ export default {
     },
     methods: {
         changeFilter(){
-            // console.log('filter children', this.filterBy)
             if(this.filterBy.title != '' && this.filterBy.status != ''){
                 this.alert = false
                 this.$emit('changeFilter', this.filterBy)
