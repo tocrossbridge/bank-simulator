@@ -28,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(transaction, index) in transactions" :key="index">
+            <tr @click="openModal(transaction.id)" v-for="(transaction, index) in transactions" :key="index">
               <td>{{ transaction.title }}</td>
               <td>{{ transaction.description }}</td>
               <td>
@@ -46,14 +46,14 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { getAllTransactions, getTransaction } from '../services/transactions';
+
 import Modal from '../components/Modal.vue';
 
 export default {
     components: { Modal },
     data() {
         return {
-            loading: true,
             errored: false,
             transactions: [],
             modal: {
@@ -63,17 +63,32 @@ export default {
         };
     },
     mounted() {
-        // get the data with axios
-        axios
-          .get("https://warren-transactions-api.herokuapp.com/api/transactions")
-            .then(response => {
-            this.transactions = response.data;
+      this.fetchTransactions()
+    },
+    methods: {
+      fetchTransactions(){
+        getAllTransactions()
+                        .then(response => {
+                          this.transactions = response.data
+                        })
+                        .catch(error => {
+                          this.errored = true;
+                          console.log(error);
+                        })
+                        .finally(() => this.loading = false);
+      },
+      openModal(transactionId){
+        getTransaction(transactionId)
+          .then(response => {
+            this.modal.open = true
+            this.modal.data = response.data
           })
           .catch(error => {
             this.errored = true;
             console.log(error);
           })
           .finally(() => this.loading = false);
+        }
     }
 }
 </script>
