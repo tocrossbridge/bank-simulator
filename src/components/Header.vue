@@ -16,7 +16,6 @@ header {
 }
 @media screen and (min-width: 900px) {
     header {
-        max-width: 80%;
         margin: 2em auto;
     }
 }
