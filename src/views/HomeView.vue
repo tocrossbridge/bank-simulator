@@ -24,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            <Transactions :transactions="transactionsFiltered" />
+            <Transactions v-on:openModal="showTransactionModal($event)" :transactions="transactionsFiltered" />
           </tbody>
         </table>
       </div>
@@ -70,19 +70,6 @@ export default {
           })
           .finally(() => this.loading = false);
       },
-      openModal(transactionId){
-        console.log('modal')
-        getTransaction(transactionId)
-          .then(response => {
-            this.modal.open = true
-            this.modal.data = response.data
-          })
-          .catch(error => {
-            this.errored = true;
-            console.log(error);
-          })
-          .finally(() => this.loading = false);
-      },
       updateFilter(newFilter){
         // console.log('filter father', newFilter)
         this.filterBy = newFilter
@@ -100,6 +87,18 @@ export default {
         });
 
         this.transactionsFiltered = tempList
+      },
+      showTransactionModal(transactionId){
+        getTransaction(transactionId)
+          .then(response => {
+            this.modal.open = true
+            this.modal.data = response.data
+          })
+          .catch(error => {
+            this.errored = true;
+            console.log(error);
+          })
+          .finally(() => this.loading = false);
       }
     }
 }

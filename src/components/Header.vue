@@ -11,12 +11,5 @@ export default {
     </header>
 </template>
 <style scoped>
-header {
-    margin: 2em;
-}
-@media screen and (min-width: 900px) {
-    header {
-        margin: 2em auto;
-    }
-}
+header { margin: 2em auto; }
 </style>

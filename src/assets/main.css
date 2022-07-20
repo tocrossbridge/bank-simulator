@@ -1,14 +1,42 @@
 @import "./base.css";
 
-.loading__box{
-    display: grid;
-}
-.loading__img{
-    max-width: 200px;
-}
+.loading__box{ display: grid; }
+.loading__img{ max-width: 200px; }
 
 input, select{
     padding: 1em;
     border: 1px solid var(--clr-pink);
     border-radius: 1.5em;
 }
+
+/* progress bar // TODO: make it a component!! */
+progress{ opacity: 0; }
+.progress-element{
+    width: 100%;
+    margin: 0 0 10px;
+}
+.progress-container {
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #eee;
+}
+  
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: var(--clr-pink);
+}
+  
+.progress-container.progress-container-created::before { animation: progress-created 1s ease-in forwards; }
+.progress-container.progress-container-processing::before { animation: progress-processing 1s ease-in forwards; }
+.progress-container.progress-container-processed::before { animation: progress-processed 1s ease-in forwards; }
+
+@keyframes progress-created { to { width: 10%; } }
+@keyframes progress-processing { to { width: 50%; } }
+@keyframes progress-processed { to { width: 100%; } }

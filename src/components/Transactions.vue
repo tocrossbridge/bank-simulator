@@ -12,6 +12,11 @@
 export default {
     props: [
         'transactions'
-    ]
+    ],
+    methods: {
+        openModal(transactionId){
+            this.$emit('openModal', transactionId)
+        }
+    }
 }
 </script>
