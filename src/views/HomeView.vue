@@ -1,5 +1,6 @@
 <template>
   <main>
+
     <div class="search__box">
       <input type="text" placeholder="Pesquise por título">
       <select name="" id="">
@@ -28,14 +29,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr @click="openModal(transaction.id)" v-for="(transaction, index) in transactions" :key="index">
-              <td>{{ transaction.title }}</td>
-              <td>{{ transaction.description }}</td>
-              <td>
-                <div :class="`table__tag table__tag--`+transaction.status">{{ transaction.status }}</div>
-              </td>
-              <td>{{ transaction.amount }}</td>
-            </tr>
+            <Transactions :transactions="transactions" />
           </tbody>
         </table>
       </div>
@@ -46,12 +40,12 @@
 </template>
 
 <script>
+import Transactions from '../components/Transactions.vue';
+import Modal from '../components/Modal.vue';
 import { getAllTransactions, getTransaction } from '../services/transactions';
 
-import Modal from '../components/Modal.vue';
-
 export default {
-    components: { Modal },
+    components: { Modal, Transactions },
     data() {
         return {
             errored: false,
@@ -68,15 +62,15 @@ export default {
     methods: {
       fetchTransactions(){
         getAllTransactions()
-                        .then(response => {
-                          this.transactions = response.data
-                        })
-                        .catch(error => {
-                          this.errored = true;
-                          console.log(error);
-                        })
-                        .finally(() => this.loading = false);
-      },
+          .then(response => {
+            this.transactions = response.data
+          })
+          .catch(error => {
+            this.errored = true;
+            console.log(error);
+          })
+          .finally(() => this.loading = false);
+        },
       openModal(transactionId){
         getTransaction(transactionId)
           .then(response => {
