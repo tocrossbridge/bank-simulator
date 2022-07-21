@@ -1,15 +1,17 @@
 <script>
-import IconLogo from './icons/IconLogo.vue';
+import IconLogo from "./icons/IconLogo.vue";
 
 export default {
-    components: { IconLogo }
-}
+  components: { IconLogo }
+};
 </script>
 <template>
-    <header>
-        <IconLogo />
-    </header>
+  <header>
+    <IconLogo />
+  </header>
 </template>
 <style scoped>
-header { margin: 2em auto; }
+header {
+  margin: 2em auto;
+}
 </style>
