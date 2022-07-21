@@ -64,12 +64,10 @@ export default {
         try{
           getAllTransactions()
             .then(response => {
-              this.transactionsFiltered = response.data
-              this.transactions = response.data
-
 
               // yeah yeah, the down below itsn't really necessary but I want you to see the loading :)
               setTimeout(() => {
+                this.filterTransactionsByDate(response.data)
                 this.loading = false
               }, 1500);
               // enjoy :)
@@ -108,6 +106,23 @@ export default {
             console.log(error);
           })
           .finally(() => this.loading = false);
+      },
+      filterTransactionsByDate(responseData){
+        let oldDate
+        let tempList = []
+
+        responseData.forEach(element => {
+          let currentDate = new Date(element.date)
+          
+          if(currentDate >= oldDate){
+            tempList.push(element)
+          }
+
+          oldDate = currentDate
+        });
+
+        this.transactions = tempList
+        this.transactionsFiltered = tempList
       }
     }
 }

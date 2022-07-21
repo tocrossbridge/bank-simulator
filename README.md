@@ -12,7 +12,7 @@
 This is an application for Warren tech challenge, created using `VueJS` that shows a list of transactions and its main data related of each screen.
 The main rules of the challenge are:
 
-- [ ] List of transactions grouped by date (???)
+- [x] List of transactions grouped by date
 - [x] Filter by title
 - [x] Filter by status
 - [x] Modal containing transaction details
