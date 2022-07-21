@@ -5,7 +5,7 @@
 
 ## Preview
 
-![Preview gif](./demo.gif)
+![Preview gif](./preview.gif)
 
 ## About & Features
 
