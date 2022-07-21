@@ -11,8 +11,8 @@
 
       <div v-else>
         <div class="loading__box" v-if="loading">
-          Carregando dados...
           <img class="loading__img" src="../assets/images/loading.png" alt="">
+          Carregando dados...
         </div>
         <table v-else>
           <thead>
@@ -44,6 +44,7 @@ export default {
     components: { Modal, Filter, Transactions },
     data() {
         return {
+            loading: true,
             errored: false,
             transactions: [],
             transactionsFiltered: [],
@@ -54,21 +55,30 @@ export default {
             filterBy: {}
         };
     },
-    mounted() {
+    async mounted() {
       this.fetchTransactions()
     },
     methods: {
-      fetchTransactions(){
-        getAllTransactions()
-          .then(response => {
-            this.transactionsFiltered = response.data
-            this.transactions = response.data
-          })
-          .catch(error => {
-            this.errored = true;
-            console.log(error);
-          })
-          .finally(() => this.loading = false);
+      async fetchTransactions(){
+
+        try{
+          getAllTransactions()
+            .then(response => {
+              this.transactionsFiltered = response.data
+              this.transactions = response.data
+
+
+              // yeah yeah, the down below itsn't really necessary but I want you to see the loading :)
+              setTimeout(() => {
+                this.loading = false
+              }, 1500);
+              // enjoy :)
+
+            })
+        }catch(e){
+          this.errored = true;
+          console.log(error);
+        }
       },
       updateFilter(newFilter){
         this.filterBy = newFilter

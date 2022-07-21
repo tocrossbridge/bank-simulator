@@ -1,6 +1,11 @@
 @import "./base.css";
 
-.loading__box{ display: grid; }
+.loading__box {
+    display: grid;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
 .loading__img{ max-width: 200px; }
 
 input, select{
