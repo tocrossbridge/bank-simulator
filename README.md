@@ -5,7 +5,7 @@
 
 ## Preview
 
-<HOLD ON THE LINE BRO, I'M STILL CODING THIS (and a little tired too --')!>
+![Preview gif](./demo.gif)
 
 ## About & Features
 
@@ -21,25 +21,24 @@ For more information about the challenge, check the official link here: <a href=
 
 ## Tech decisions
 
-* Decided to add colors at transaction status to improve user visualization
 * Added alert at filter
 * Added loading message
+* Used label colors at status transactions table to improve user visualization
 * Chose Montserrat font cause this is the second font at WarrenBR website
-* Changed favicon and added SEO
-* Applied vars for dark mode (and yeah yeah need to improve it)
 * Did Services layer
+* Used ESLint
 * Some doubts that I had:
     * At the filter
         * Do u guys want to show everything if the 2 filters are applied or just one? 
-        So, I did if the 2 options selected version, but I know how to do the other way too ahahhahaha
+        So, I did the version that only filter if the 2 options are selected, but I know how to do the other way too
     * At you website:
-        * While I was inspecioning your website, I noticed that u guys still use 3 or more props at CSS rather than write everything in just one line, as example: font-weight, font-family and font-size at 3 lines. There is an especific reason for this? ._.
+        * While I was inspecioning your website, I noticed that u guys still use 3 or more props at CSS rather than write everything in just one line, as example: font-weight, font-family and font-size at 3 lines. There is an especific tech reason for this?
 
 ## To-do
 
 - [ ] Transform the progress bar in a component
 - [ ] Improve dark mode (and perhaps a feature to switch both)
-- [ ] See more details at transactions
+- [ ] Improve tests
 
 ## Get Started
 
