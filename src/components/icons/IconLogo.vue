@@ -33,6 +33,11 @@
 		<span>Bank Simulator</span>
 	</div>
 </template>
+<script>
+export default {
+	name: 'IconLogo'
+}
+</script>
 <style scoped>
 .icon__header {
 	display: flex;

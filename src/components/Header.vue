@@ -8,6 +8,7 @@
 import IconLogo from "./icons/IconLogo.vue";
 
 export default {
+	name: 'HeaderApp',
 	components: { IconLogo }
 };
 </script>
