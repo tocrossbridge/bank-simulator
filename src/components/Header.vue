@@ -1,17 +1,19 @@
+<template>
+	<header>
+		<IconLogo />
+		<!-- TODO: melhorar header -->
+	</header>
+</template>
 <script>
 import IconLogo from "./icons/IconLogo.vue";
 
 export default {
-  components: { IconLogo }
+	components: { IconLogo }
 };
 </script>
-<template>
-  <header>
-    <IconLogo />
-  </header>
-</template>
-<style scoped>
+<style>
 header {
-  margin: 2em auto;
+	padding: 20px;
+	background-color: #212121;
 }
 </style>

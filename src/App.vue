@@ -4,6 +4,12 @@ import Header from "./components/Header.vue";
 </script>
 
 <template>
-  <Header />
-  <RouterView />
+	<Header />
+	<RouterView />
 </template>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
+</style>

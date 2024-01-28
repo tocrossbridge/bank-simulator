@@ -1,4 +1,9 @@
-# Warren Challenge
+# Bank Simultor (antigo Warren Challenge)
+
+OLÁ OLÁ! :D
+
+Isso aqui foi um desafio pra tentar entrar na Warren e estou fazendo refactor nesse repositório, tenha paciência q logo o brabo nasce ^-^
+
 
 [![VueJS Version](https://img.shields.io/badge/vuejs-3.2.37-green.svg)](https://vuejs.org)
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/wolfhaltz/warren-challenge)
