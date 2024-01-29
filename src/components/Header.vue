@@ -1,7 +1,7 @@
 <template>
 	<header>
-		<IconLogo />
 		<!-- TODO: melhorar header -->
+		<IconLogo />
 	</header>
 </template>
 <script>

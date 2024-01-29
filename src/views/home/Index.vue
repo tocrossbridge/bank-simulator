@@ -64,19 +64,19 @@ export default {
 			this.$router.push('/pix');
 		},
 		navigateToPagar() {
-			this.$router.push('/pay');
+			this.$router.push('/pagar');
 		},
 		navigateToTransferir() {
 			this.$router.push('/transferencias');
 		},
 		navigateToCobrar() {
-			// TODO: Implementar a navegação para a página de cobrança
+			this.$router.push('/cobrar');
 		},
 		navigateToExtrato() {
-			this.$router.push('/bank-statement');
+			this.$router.push('/extrato');
 		},
 		navigateToCofrinho() {
-			// TODO: Implementar a navegação para a página do cofrinho
+			this.$router.push('/cofrinho');
 		}
 	}
 };

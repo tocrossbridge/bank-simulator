@@ -17,43 +17,59 @@
 						class="btn-close"
 						aria-label="Close"
 						@click="closeModal"
-					/>
+					></button>
 				</div>
 
 				<div class="modal-body">
-					<slot />
+					<slot></slot>
 				</div>
 
 				<div class="modal-footer">
-					<slot name="modal-footer" />
+					<slot name="modal-footer"></slot>
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
-<script>
-import { Modal } from 'bootstrap'
 
-var myModal = {};
+<script>
+import { Modal } from 'bootstrap';
 
 export default {
 	name: 'Modal',
 	props: {
-		id: { type: String, default: "modal" },
+		id: { type: String, default: 'modal' },
 		exibir: { type: Boolean, default: false },
 		title: { type: String, default: '' },
-		transactionId: { type: String, default: '' }
+		transactionId: { type: String, default: '' },
 	},
-	mounted() {
-		myModal = new Modal(document.getElementById(this.id));
+	data() {
+		return {
+			modalInstance: null,
+		};
 	},
 	watch: {
 		exibir(valor) {
-			valor ? myModal.show() : myModal.hide();
-		}
+			valor ? this.showModal() : this.hideModal();
+		},
+	},
+	mounted() {
+		this.modalInstance = new Modal(document.getElementById(this.id));
 	},
 	methods: {
-		closeModal() { this.$emit('close') }
-	}
-}
+		showModal() {
+			if (this.modalInstance) {
+				this.modalInstance.show();
+			}
+		},
+		hideModal() {
+			if (this.modalInstance) {
+				this.modalInstance.hide();
+			}
+		},
+		closeModal() {
+			this.$emit('close');
+		},
+	},
+};
 </script>
